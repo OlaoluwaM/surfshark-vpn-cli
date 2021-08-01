@@ -1,1 +1,3 @@
-Surshark VPN CLI
+# Surshark VPN CLI
+
+README update coming soon 👀
