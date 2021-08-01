@@ -6,12 +6,13 @@ tcpOrUdpArgument=$2
 location="${locationArgument:=us-atl}"
 tcpOrUdp="${tcpOrUdpArgument:=tcp}"
 
-. encpass.sh
+# To grab .env variables
+set -o allexport
+. "$(dirname $0)/.env"
+set +o allexport
 
-username=$(get_secret surfshark username)
-password=$(get_secret surfshark password)
-
-expect <(cat << EOF
+expect <(
+  cat <<EOF
   spawn sudo openvpn $HOME/vpns/$location.prod.surfshark.com_$tcpOrUdp.ovpn
   expect "password for" {
       stty -echo
@@ -19,9 +20,9 @@ expect <(cat << EOF
       stty echo
     }
   expect "Username:"
-  send "$username\r"
+  send "$SURFSHARK_USERNAME\r"
   expect "Password:"
-  send "$password\r"
+  send "$SURFSHARK_PASSWORD\r"
   interact
 EOF
-)
+) 2>/dev/null
