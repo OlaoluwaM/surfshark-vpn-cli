@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-read -e -t 10 -p 'Where would you like to connect to: ' -n 8 -i 'us-atl' locationArgument
-echo
-read -e -t 10 -p 'Would you like to use tcp or udp: ' -i 'tcp' tcpOrUdpArgument
-echo
+read -e -t 20 -p 'Where would you like to connect to: ' -n 8 -i 'us-atl' locationArgument
+[[ $? -eq 142 ]] && echo
+
+read -e -t 20 -p 'Would you like to use tcp or udp: ' -i 'tcp' tcpOrUdpArgument
+[[ $? -eq 142 ]] && echo
 
 location="${locationArgument:=us-atl}"
 tcpOrUdp="${tcpOrUdpArgument:=tcp}"
