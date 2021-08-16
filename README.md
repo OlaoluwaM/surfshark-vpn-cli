@@ -7,4 +7,6 @@ However, connection script is fully operational, but until you follow [this guid
 
 The installation script will handle that part in the future though 👀.
 
-You will need to use the `chmod` operator to make the scripts executable
+## Roadmap
+
+- Make setup script executable by default once it is completed

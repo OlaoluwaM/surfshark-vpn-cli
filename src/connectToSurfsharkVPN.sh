@@ -15,22 +15,14 @@ set -o allexport
 . $envFilePath
 set +o allexport
 
-[ -f $envFilePath ] && touch $envFilePath
-
 if [[ -z "$SURFSHARK_USERNAME" ]]; then
   read -t 20 -p 'Surfshark username not set in .env, please provide it: ' SURFSHARK_USERNAME
   [[ -z "$SURFSHARK_USERNAME" ]] && echo "Script cannot run without surfshark username" && exit 1
 
-  echo "Don't worry, you won't have to do this again"
-  echo "SURFSHARK_USERNAME=$SURFSHARK_USERNAME" >>$envFilePath
-fi
-
-if [[ -z "$SURFSHARK_PASSWORD" ]]; then
+elif [[ -z "$SURFSHARK_PASSWORD" ]]; then
   read -t 20 -sp 'Surfshark password not set in .env, please provide it: ' SURFSHARK_PASSWORD
   [[ -z "$SURFSHARK_PASSWORD" ]] && echo "Script cannot run without surfshark password" && exit 1
 
-  echo "Don't worry, you won't have to do this again"
-  echo "SURFSHARK_PASSWORD=$SURFSHARK_PASSWORD" >>$envFilePath
 fi
 
 expect <(
