@@ -8,7 +8,7 @@ read -e -t 20 -p 'Would you like to use tcp or udp: ' -i 'tcp' tcpOrUdpArgument
 
 location="${locationArgument:=us-atl}"
 tcpOrUdp="${tcpOrUdpArgument:=tcp}"
-envFilePath="$(dirname $0)/.env"
+envFilePath="$(dirname $(dirname $0))/.env"
 
 # To grab .env variables
 set -o allexport
