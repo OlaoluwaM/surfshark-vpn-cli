@@ -3,11 +3,11 @@
 read -e -t 20 -p 'Where would you like to connect to: ' -n 8 -i 'us-atl' locationArgument
 [[ $? -eq 142 ]] && echo
 
-read -e -t 20 -p 'Would you like to use tcp or udp: ' -i 'tcp' tcpOrUdpArgument
+read -e -t 20 -p 'Would you like to use tcp or udp: ' -i 'udp' tcpOrUdpArgument
 [[ $? -eq 142 ]] && echo
 
 location="${locationArgument:=us-atl}"
-tcpOrUdp="${tcpOrUdpArgument:=tcp}"
+tcpOrUdp="${tcpOrUdpArgument:=udp}"
 envFilePath="$(dirname $(dirname $0))/.env"
 
 # To grab .env variables
